@@ -11,7 +11,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
   - [Git](https://git-scm.com) 
   - [Java 8](https://www.java.com/pt-BR/download/ie_manual.jsp?locale=pt_BR)
   - [Maven](https://maven.apache.org/download.cgi)
-  - SQLServer(https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
+  - [SQLServer](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
   
 Além disto é bom ter uma IDE para trabalhar com desenvolvimento em Java [Eclipse](https://www.eclipse.org/downloads/)
 
