@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		<div class="jumbotron mb-0">
+			<h1 class="display-4">Nova Tarefa</h1>
+		</div>
+		<div class="card mt-3">
+			<form th:object="${tarefaForm}" class="card-body" action="/tarefa/nova" method="POST">
+				<div class="form-group">
+					<label for="nomeTarefa">Tarefa</label> 
+					<input th:field="*{nomeTarefa}" 
+						class="form-control"
+						placeholder="Nome da Tarefa"
+						th:errorclass="is-invalid"/> 
+					<small>Informe nome da tarefa que deseja cadasatrar</small>
+					<div th:errors="*{nomeTarefa}" class="invalid-feedback">
+						Validações Nome 
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="descricaoTarefa">Descrição</label>
+					<textarea th:field="*{descricaoTarefa}" 
+						class="form-control" 
+						placeholder="Descrição da Tarefa"
+						th:errorclass="is-invalid"
+						></textarea>
+					<small>Informe uma descrição para sua tarefa</small>
+					<div th:errors="*{descricaoTarefa}" 
+						class="invalid-feedback">
+						Validações Descrição 
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="statusTarefa">Status</label> 
+					<input class="form-control" th:field="*{statusTarefa}"
+						placeholder="Status da Tarefa"
+						th:errorclass="is-invalid"> 
+					<small>Informe o status da tarefa que deseja registrar</small>
+					<div th:errors="*{statusTarefa}" class="invalid-feedback">
+						Validações Status
+					</div>
+				</div>
+				<button class="btn btn-primary" type="submit">Cadastrar</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
