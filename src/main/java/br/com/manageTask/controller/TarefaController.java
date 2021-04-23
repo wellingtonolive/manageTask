@@ -34,7 +34,7 @@ public class TarefaController {
 		
 		Tarefa tarefa = tarefaForm.toTarefa();
 		tarefaRepository.save(tarefa);
-		return "tarefa/formulario";
+		return "redirect:/home";
 	}
 
 }

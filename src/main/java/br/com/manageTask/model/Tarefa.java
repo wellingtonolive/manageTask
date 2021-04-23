@@ -2,6 +2,8 @@ package br.com.manageTask.model;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +19,9 @@ public class Tarefa {
 	private String nome;
 	private LocalDate dataInicial;
 	private LocalDate dataFim;
-	private String status;
+	
+	@Enumerated(EnumType.STRING)
+	private StatusTarefa status;
 	private String descricao;
 
 	public String getNome() {
@@ -44,14 +48,6 @@ public class Tarefa {
 		this.dataFim = dataFim;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -59,5 +55,23 @@ public class Tarefa {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public StatusTarefa getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusTarefa status) {
+		this.status = status;
+	}
+	
+	
 
 }

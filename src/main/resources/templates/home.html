@@ -1,32 +1,29 @@
 <html>
-<head>
-<meta charset="UTF-8" />
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
-</head>
+<head th:replace="~{base/head :: head}"></head>
 <body>
-
+	<div th:replace="~{base/logo :: logo}"></div>
 	<div class="container">
-		<div class="jumbotron mb-0">
-			<h1 class="display-4">Minhas Tarefas</h1>
-		</div>
+		<div th:replace="~{base/titulo :: titulo('Minhas Tarefas')}"></div>
 		<nav
 			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="">Todas</a> <a
-					class="nav-item nav-link " href="">Pendentes</a> <a
-					class="nav-item nav-link " href="">Encerradas</a>
+				<a th:classappend="${status} == null ? 'active'" class="nav-item nav-link" href="/home">Todas</a> 
+				<a th:classappend="${status} == 'pendente' ? 'active'" class="nav-item nav-link " href="/home/pendente">Pendentes</a> 
+				<a th:classappend="${status} == 'realizando' ? 'active'" class="nav-item nav-link " href="/home/realizando">Realizando</a>
+				<a th:classappend="${status} == 'realizadas' ? 'active'" class="nav-item nav-link " href="/home/realizadas">Realizadas</a>
 			</div>
 			<a href="/tarefa/formulario">
 				<button class="btn btn-outline-secondary my-2 my-sm-0">Nova
 				</button>
 			</a>
 		</nav>
-		<div class="card" th:each="tarefa : ${tarefas}">
-			<div class="card-header" th:text="${tarefa.nome}">Nome da
-				Tarefa</div>
+		<div class="card mb-3" th:each="tarefa : ${tarefas}">
+			<th:block th:switch="${tarefa.status.name()}">
+				<div th:case="'PENDENTE'" class="card-header alert-danger" th:text="${tarefa.nome}">Nome da Tarefa</div>
+				<div th:case="'REALIZANDO'" class="card-header alert-primary" th:text="${tarefa.nome}">Nome da Tarefa</div>
+				<div th:case="'FECHADA'" class="card-header alert-success" th:text="${tarefa.nome}">Nome da Tarefa</div>
+			</th:block>
+			
 			<div class="card-body">
 				<div class="row">
 					<div class="col-12 col-sm-8 mb-3">

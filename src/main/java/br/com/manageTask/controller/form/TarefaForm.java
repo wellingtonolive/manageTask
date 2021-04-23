@@ -2,7 +2,7 @@ package br.com.manageTask.controller.form;
 
 import javax.validation.constraints.NotBlank;
 
-
+import br.com.manageTask.model.StatusTarefa;
 import br.com.manageTask.model.Tarefa;
 
 public class TarefaForm {
@@ -37,7 +37,7 @@ public class TarefaForm {
 		Tarefa tarefa = new Tarefa();
 		tarefa.setNome(nomeTarefa);
 		tarefa.setDescricao(descricaoTarefa);
-		tarefa.setStatus(statusTarefa);
+		tarefa.setStatus(StatusTarefa.PENDENTE);
 		return tarefa;
 	}
 	
