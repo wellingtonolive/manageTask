@@ -1,3 +1,8 @@
 <div th:fragment="logo" class="logo-container mb-3 p-3 d-flex justify-content-between">
-	<span class="logo">ManageTask</span> <span class="login">Login</span>
+	<span class="logo">ManageTask</span> 
+	<span class="login">
+		<a href="/login" sec:authorize="!isAuthenticated()">Login</a>
+		<a onclick="document.querySelector('#form-login').submit()" href="#" sec:authorize="isAuthenticated()">Logout</a>
+		<form id="form-login" th:action="@{/logout}" method="post"></form>
+	</span>
 </div>

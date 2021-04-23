@@ -3,8 +3,20 @@
 <body>
 	<div th:replace="~{base/logo :: logo}"></div>
 	<div class="container">
-		<div th:replace="~{base/titulo :: titulo('Controlador de Tarefas')}"></div>
-		
+		<div th:replace="~{base/titulo :: titulo('Minhas Tarefas')}"></div>
+		<nav
+			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+			<div class="navbar-nav">
+				<a th:classappend="${status} == null ? 'active'" class="nav-item nav-link" th:href="@{/usuario/tarefas}">Todas</a> 
+				<a th:classappend="${status} == 'pendente' ? 'active'" class="nav-item nav-link " th:href="@{/usuario/tarefas/pendente}">Pendentes</a> 
+				<a th:classappend="${status} == 'realizando' ? 'active'" class="nav-item nav-link "th:href="@{/usuario/tarefas/realizando}">Realizando</a>
+				<a th:classappend="${status} == 'realizadas' ? 'active'" class="nav-item nav-link " th:href="@{/usuario/tarefas/realizadas}">Realizadas</a>
+			</div>
+			<a href="/tarefa/formulario">
+				<button class="btn btn-outline-secondary my-2 my-sm-0">Nova
+				</button>
+			</a>
+		</nav>
 		<div class="card mb-3" th:each="tarefa : ${tarefas}">
 			<th:block th:switch="${tarefa.status.name()}">
 				<div th:case="'PENDENTE'" class="card-header alert-danger" th:text="${tarefa.nome}">Nome da Tarefa</div>

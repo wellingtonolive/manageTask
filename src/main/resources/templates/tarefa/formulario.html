@@ -5,7 +5,7 @@
 	<div class="container">
 		<div th:replace="~{base/titulo :: titulo('Nova Tarefa')}"></div>
 		<div class="card mt-3">
-			<form th:object="${tarefaForm}" class="card-body" action="/tarefa/nova" method="POST">
+			<form th:object="${tarefaForm}" class="card-body" th:action="@{/tarefa/nova}" method="POST">
 				<div class="form-group">
 					<label for="nomeTarefa">Tarefa</label> 
 					<input th:field="*{nomeTarefa}" 
